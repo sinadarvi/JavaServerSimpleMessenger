@@ -11,15 +11,14 @@ import javax.swing.JTextField;
 /**
  * Created by Sina Darvishi on 12/26/2016.
  */
-public class ServerBoard extends JFrame
+class ServerBoard extends JFrame
 {
     private JTextArea messagesArea;
-    private JButton sendButton;
     private JTextField message;
     private JButton startServer;
     private TCPServer mServer;
 
-    public ServerBoard() {
+    ServerBoard() {
 
         super("ServerBoard");
 
@@ -35,7 +34,7 @@ public class ServerBoard extends JFrame
         messagesArea.setRows(10);
         messagesArea.setEditable(false);
 
-        sendButton = new JButton("Send");
+        JButton sendButton = new JButton("Send");
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

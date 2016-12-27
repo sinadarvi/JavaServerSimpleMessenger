@@ -5,16 +5,14 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 /**
  * Created by Sina Darvishi on 12/26/2016.
  */
 public class TCPServer extends Thread {
 
-    public static final int SERVERPORT = 4444;
-    private boolean running = false;
+    private static final int SERVERPORT = 4444;
     private PrintWriter mOut;
     private OnMessageReceived messageListener;
 
@@ -22,7 +20,7 @@ public class TCPServer extends Thread {
 
         //opens the window where the messages will be received and sent
         ServerBoard frame = new ServerBoard();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
@@ -32,7 +30,7 @@ public class TCPServer extends Thread {
      * Constructor of the class
      * @param messageListener listens for the messages
      */
-    public TCPServer(OnMessageReceived messageListener) {
+    TCPServer(OnMessageReceived messageListener) {
         this.messageListener = messageListener;
     }
 
@@ -40,7 +38,7 @@ public class TCPServer extends Thread {
      * Method to send the messages from server to client
      * @param message the message sent by the server
      */
-    public void sendMessage(String message){
+    void sendMessage(String message){
         if (mOut != null && !mOut.checkError()) {
             mOut.println(message);
             mOut.flush();
@@ -51,7 +49,7 @@ public class TCPServer extends Thread {
     public void run() {
         super.run();
 
-        running = true;
+        boolean running = true;
 
         try {
             System.out.println("S: Connecting...");
