@@ -9,7 +9,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- * Created by Sina Darvishi on 12/26/2016.
+ * Created by Sina Darvishi on 12/26/2016
  */
 class ServerBoard extends JFrame
 {
